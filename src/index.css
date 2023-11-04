@@ -1,0 +1,44 @@
+:root {
+  --white: #fff;
+  --black: #333;
+  --gradient-warm: #ff8caf78 linear-gradient(to bottom, #ff97b673, #f4cd798f);
+  --gradient-cold: #8ca7ff78 linear-gradient(to bottom, #97eaff73, #a479f48f);
+  --button: #fb99b6 linear-gradient(to top, #ad395c6e, #494b9ca1);
+  --button-active: #fb99b6 linear-gradient(to top, #a53a5abe, #494a9cc7);
+  --background-light: #ffe9f2e3;
+  --background-active: #f0e2eade;
+  --font-primary: Montserrat, sans-serif;
+  --font-small: 0.85rem;
+  --font-medium: 1rem;
+  --font-large: 1.125rem;
+  --font-title: 1.5rem;
+  --font-heading: 2.5rem;
+  --font-xl: 4rem;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+::after,
+::before {
+  box-sizing: inherit;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  font-family: var(--font-primary);
+  font-size: var(--font-medium);
+  font-weight: 600;
+  margin: 0;
+  padding: 1em;
+  background: url('assets/background.jpg') center no-repeat;
+  background-size: cover;
+}
