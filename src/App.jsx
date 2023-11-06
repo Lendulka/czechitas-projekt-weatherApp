@@ -21,7 +21,7 @@ function App() {
 
         <h1>My Weather App</h1>
 
-        <CitySelect changeCity={handleCityChange} />
+        <CitySelect city={city} changeCity={handleCityChange} />
 
         <div className="weather">
 

@@ -7,11 +7,12 @@ const CurrentWeather = ({ city }) => {
     const [data, setData] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const [isError, setIsError] = useState(false)
+    const key = import.meta.env.VITE_SOME_KEY
 
     useEffect(
         () => {
             setIsLoading(true)
-            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=bf9e054642605916e4aedf38cfdad5b3`)
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}`)
                 .then(response => response.json())
                 .then(json => {
                     if (json.cod === 200) {
@@ -31,7 +32,8 @@ const CurrentWeather = ({ city }) => {
         <div className={Math.round(data.main.temp) < 10 ?
             "weather__current  weather__current--cold" : "weather__current"}>
 
-            {isLoading ? <Loading />
+            {isLoading ?
+                <Loading />
                 : (
                     <>
                         <h2 className="weather__city" id="mesto">
@@ -91,9 +93,5 @@ const CurrentWeather = ({ city }) => {
         </div>
     )
 }
-
-
-
-
 
 export default CurrentWeather

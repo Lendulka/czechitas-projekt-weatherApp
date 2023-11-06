@@ -1,10 +1,7 @@
 
-import { useState } from 'react'
 import { cities } from '../../helpers/unixTime'
 
-const CitySelect = ({ changeCity }) => {
-
-    const [selectCity, setSelectCity] = useState("Brno")
+const CitySelect = ({ city, changeCity }) => {
 
     return (
         <div className="select-wrapper">
@@ -12,13 +9,12 @@ const CitySelect = ({ changeCity }) => {
                 className="select"
                 name="cityselect"
                 id="cityselect"
-                value={selectCity}
+                value={city}
                 onChange={
-                    e => { changeCity(e.target.value); setSelectCity(e.target.value) }
+                    (e) => { changeCity(e.target.value) }
                 }
             >
                 {cities.map(oneCity => <option key={oneCity} value={oneCity}>{oneCity}</option>)}
-
             </select>
         </div>
     )
