@@ -1,0 +1,31 @@
+.weather__forecast {
+    min-height: 360px;
+    color: var(--black);
+    background-color: var(--background-light);
+}
+
+.forecast {
+    border-top: 1px solid #e5e5e5;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    color: var(--black);
+}
+
+.forecast:hover {
+    background-color: var(--background-active);
+}
+
+.forecast__day {
+    flex: 1;
+    font-size: var(--font-small);
+}
+
+.forecast__icon {
+    height: 40px;
+}
+
+.forecast__temp {
+    flex: 0 0 70px;
+    text-align: right;
+}

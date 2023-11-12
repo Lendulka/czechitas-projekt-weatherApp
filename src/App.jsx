@@ -4,8 +4,6 @@ import CurrentWeather from './components/CurrentWeather'
 import CitySelect from './components/CitySelect'
 import './App.css'
 
-//const cities = ["Praha", "Brno", "Bratislava"]
-
 function App() {
 
   const [city, setCity] = useState("Brno")

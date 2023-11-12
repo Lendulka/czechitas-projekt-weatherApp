@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { getTimefromUnix } from '../../helpers/unixTime'
 import Loading from '../Loading'
+import './style.css'
 
 const CurrentWeather = ({ city }) => {
 

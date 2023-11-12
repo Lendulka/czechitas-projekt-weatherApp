@@ -39,6 +39,6 @@ body {
   font-weight: 600;
   margin: 0;
   padding: 1em;
-  background: url('assets/background.jpg') center no-repeat;
+  background: url('/background.jpg') center no-repeat;
   background-size: cover;
 }

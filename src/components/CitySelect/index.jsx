@@ -1,5 +1,6 @@
 
 import { cities } from '../../helpers/unixTime'
+import './style.css'
 
 const CitySelect = ({ city, changeCity }) => {
 
