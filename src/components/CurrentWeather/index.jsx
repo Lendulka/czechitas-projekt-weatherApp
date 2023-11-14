@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react'
 import { getTimefromUnix } from '../../helpers/unixTime'
 import Loading from '../Loading'
+import Error from '../Error'
 import './style.css'
 
 const CurrentWeather = ({ city }) => {
 
     const [data, setData] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
-    const [isError, setIsError] = useState(false)
+    const [isError, setIsError] = useState(null)
     const key = import.meta.env.VITE_SOME_KEY
 
     useEffect(
@@ -16,17 +17,23 @@ const CurrentWeather = ({ city }) => {
             fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}`)
                 .then(response => response.json())
                 .then(json => {
-                    if (json.cod === 200) {
-                        setData(json)
-                        console.log(json)
-                    } else { setIsError(true) }
+                    setData(json)
+                    console.log(json)
+                    setIsLoading(false)
+                })
+                .catch(error => {
+                    setIsError(error)
                     setIsLoading(false)
                 })
         }, [city]
     )
 
-    if (data === null || data === undefined || isError) {
+    if (data === null || data === undefined) {
         return <></>
+    }
+
+    if (isError) {
+        return <Error />
     }
 
     return (
