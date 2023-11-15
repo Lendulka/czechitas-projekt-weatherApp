@@ -7,7 +7,7 @@ import './style.css'
 const Forecast = ({ city }) => {
 
     const [data, setData] = useState(null)
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const [isError, setIsError] = useState(null)
     const key = import.meta.env.VITE_SOME_KEY
 
@@ -25,43 +25,45 @@ const Forecast = ({ city }) => {
                         json.list[24],
                         json.list[32],
                     ])
-                    setIsLoading(false)
                 })
                 .catch(error => {
                     setIsError(error)
+                })
+                .finally(() => {
                     setIsLoading(false)
                 })
         }, [city]
     )
 
-    if (data === null || data === undefined) {
-        return <></>
+    if (isLoading) {
+        return <Loading />
     }
 
     if (isError) {
         return <Error />
     }
 
+    if (data === null || data === undefined) {
+        return <></>
+    }
+
     return (
         <div className="weather__forecast" id="predpoved">
-            {isLoading ? <Loading />
-                :
-                data.map(forecast => (
-                    <div key={forecast.dt} className="forecast">
-                        <div className="forecast__day">
-                            {getDayfromUnix(forecast.dt)} {getDatefromUnix(forecast.dt)}
-                        </div>
-                        <div className="forecast__icon">
-                            <img
-                                src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
-                                style={{ height: "100%" }}
-                                alt="forecast weather icon"
-                            />
-                        </div>
-                        <div className="forecast__temp">{Math.round(forecast.main.temp)} °C</div>
+            {data.map(forecast => (
+                <div key={forecast.dt} className="forecast">
+                    <div className="forecast__day">
+                        {getDayfromUnix(forecast.dt)} {getDatefromUnix(forecast.dt)}
                     </div>
-                ))
-            }
+                    <div className="forecast__icon">
+                        <img
+                            src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
+                            style={{ height: "100%" }}
+                            alt="forecast weather icon"
+                        />
+                    </div>
+                    <div className="forecast__temp">{Math.round(forecast.main.temp)} °C</div>
+                </div>
+            ))}
         </div>
     )
 }
