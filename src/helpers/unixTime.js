@@ -1,21 +1,21 @@
-export const getTimefromUnix = (unix) => {
+export const getTimeFromUnix = (unix) => {
     const hours = new Date(unix * 1000).getHours();
     const minutes = new Date(unix * 1000).getMinutes();
     const twoDigitMinutes = minutes.toString().padStart(2, "0");
     return `${hours}:${twoDigitMinutes}`
 };
 
-export const getDatefromUnix = (unix) => {
+export const getDateFromUnix = (unix) => {
     const day = new Date(unix * 1000).getDate();
     const month = new Date(unix * 1000).getMonth();
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     return `${day} ${monthNames[month]}`
 };
 
-export const getDayfromUnix = (unix) => {
+export const getDayFromUnix = (unix) => {
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     const dayOfWeek = new Date(unix * 1000).getDay();
-    return `${days[dayOfWeek]},`
+    return days[dayOfWeek]
 };
 
 export const cities = [

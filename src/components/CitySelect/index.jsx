@@ -5,7 +5,7 @@ import './style.css'
 const CitySelect = ({ city, changeCity }) => {
 
     return (
-        <div className="select-wrapper">
+        <div className="select__wrapper">
             <select
                 className="select"
                 name="cityselect"

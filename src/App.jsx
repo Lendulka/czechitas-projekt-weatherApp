@@ -10,11 +10,11 @@ function App() {
 
   function handleCityChange(newCity) {
     setCity(newCity)
-    console.log(newCity)
   }
 
   return (
     <div className="App">
+
       <div className="container">
 
         <h1>My Weather App</h1>
@@ -30,6 +30,7 @@ function App() {
         </div>
 
       </div>
+
     </div>
   )
 }

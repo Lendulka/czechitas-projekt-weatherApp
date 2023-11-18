@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getTimefromUnix } from '../../helpers/unixTime'
+import { getTimeFromUnix } from '../../helpers/unixTime'
 import Loading from '../Loading'
 import Error from '../Error'
 import './style.css'
@@ -45,26 +45,23 @@ const CurrentWeather = ({ city }) => {
         <div className={Math.round(data.main.temp) < 10 ?
             "weather__current  weather__current--cold" : "weather__current"}>
 
-            <h2 className="weather__city" id="mesto">
+            <h2 className="weather__city">
                 {city}, {data.sys.country}
             </h2>
             <div className="weather__inner weather__inner--center">
                 <div className="weather__section weather__section--temp">
-                    <span className="weather__temp-value" id="teplota">
+                    <span className="weather__temp--value">
                         {Math.round(data.main.temp)}
                     </span>
-                    <span className="weather__temp-unit">°C</span>
-                    <div className="weather__description" id="popis">
+                    <span className="weather__temp--unit">°C</span>
+                    <div className="weather__description">
                         {data.weather[0].description}
                     </div>
                 </div>
-                <div
-                    className="weather__section weather__section--icon"
-                    id="ikona"
-                >
+                <div className="weather__section weather__section--icon">
                     <img
                         src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
-                        alt="current weather icon"
+                        alt={data.weather[0].description}
                     />
                 </div>
             </div>
@@ -86,13 +83,13 @@ const CurrentWeather = ({ city }) => {
                 <div className="weather__section">
                     <h3 className="weather__title">Sunrise</h3>
                     <div className="weather__value">
-                        <span id="sunrise">{getTimefromUnix(data.sys.sunrise)}</span>
+                        <span id="sunrise">{getTimeFromUnix(data.sys.sunrise)}</span>
                     </div>
                 </div>
                 <div className="weather__section">
                     <h3 className="weather__title">Sunset</h3>
                     <div className="weather__value">
-                        <span id="sunset">{getTimefromUnix(data.sys.sunset)}</span>
+                        <span id="sunset">{getTimeFromUnix(data.sys.sunset)}</span>
                     </div>
                 </div>
             </div>

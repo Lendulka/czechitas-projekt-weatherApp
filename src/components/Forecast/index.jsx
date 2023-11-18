@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getDatefromUnix, getDayfromUnix } from '../../helpers/unixTime'
+import { getDateFromUnix, getDayFromUnix } from '../../helpers/unixTime'
 import Loading from '../Loading'
 import Error from '../Error'
 import './style.css'
@@ -48,17 +48,17 @@ const Forecast = ({ city }) => {
     }
 
     return (
-        <div className="weather__forecast" id="predpoved">
+        <div className="weather__forecast">
             {data.map(forecast => (
                 <div key={forecast.dt} className="forecast">
                     <div className="forecast__day">
-                        {getDayfromUnix(forecast.dt)} {getDatefromUnix(forecast.dt)}
+                        {getDayFromUnix(forecast.dt)}, {getDateFromUnix(forecast.dt)}
                     </div>
                     <div className="forecast__icon">
                         <img
                             src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
                             style={{ height: "100%" }}
-                            alt="forecast weather icon"
+                            alt={forecast.weather[0].description}
                         />
                     </div>
                     <div className="forecast__temp">{Math.round(forecast.main.temp)} °C</div>

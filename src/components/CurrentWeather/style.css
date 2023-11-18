@@ -73,13 +73,13 @@
     text-align: center;
 }
 
-.weather__temp-value {
+.weather__temp--value {
     font-size: var(--font-xl);
     font-weight: 800;
     line-height: 1;
 }
 
-.weather__temp-unit {
+.weather__temp--unit {
     font-size: var(--font-title);
     font-weight: 800;
     line-height: 1;
